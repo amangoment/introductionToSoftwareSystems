@@ -3,12 +3,14 @@ import java.awt.*;
 class Block {
   final static int SIZE = 20; // pixels 
   int x, y;
-  Color color; 
+  Color color;
+    
   Block(int x, int y, Color c) {
     this.x = x;
     this.y = y;
     this.color = c; 
   }
+    
   void draw(Graphics g) {
     int xp = this.x * SIZE, //  + SIZE/2, 
         yp = this.y * SIZE; //  + SIZE/2;
@@ -17,13 +19,16 @@ class Block {
     g.setColor(Color.BLACK); 
     g.drawRect(xp, yp, SIZE, SIZE); 
   }
+    
   void move(int dx, int dy) {
     this.x += dx; 
     this.y += dy; 
-  }  
+  }
+    
   public String toString() {
     return "[" + this.x + ", " + this.y + "]"; 
   }
+    
   void rotateCW(Point c) { // clockwise
     int newX, newY;
     newX = c.x + c.y - this.y;
@@ -37,6 +42,7 @@ class Block {
      How can you be sure? 
      ********/
   }
+    
   public static void main(String[] args) { // this is testing the rotation 
     Point center = new Point(8, 3); 
     Block block = new Block(8, 2, Color.RED); 
@@ -44,9 +50,11 @@ class Block {
     block.rotateCW(center); 
     System.out.println(block); // should produce (9, 3) 
   }
+    
   boolean equals(Block other) {
     return this.x == other.x && this.y == other.y;  
   }
+    
   void setColor(Color c) {
     this.color = c;  
   }

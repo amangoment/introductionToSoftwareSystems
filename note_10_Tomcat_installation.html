@@ -1,0 +1,451 @@
+
+<html>
+  <head>
+    <title>C212/A592 Intro to Software Systems - Spring 2015</title>
+  <head>
+  <body bgcolor="white">
+  <table>
+    <tr> <td colspan=2> <hr> </td> </tr>
+    <tr>
+
+      <td align="center">
+
+        <a href="http://www.cs.indiana.edu/classes/c212/"><img src="http://www.cs.indiana.edu/classes/c212-dgerman/sum2014/summer.png" border=0></a> <br>
+
+<img src="http://www.cs.indiana.edu/classes/a201-dger/sum2001/_notes.gif">
+
+        <p> Spring Semester 2015 </p> 
+
+      </td>
+    </tr>
+    <tr> <td colspan=2> <hr> Lab Six: Installing Tomcat, Iceblox and a web chat. <hr> 
+
+
+I log into <img src="http://www.cs.indiana.edu/~dgerman/spr2015/images/atcundif.jpg"> Austin's account and I look around:
+
+<blockquote><pre>[atcundif@silo ~]$ pwd
+/u/atcundif
+[atcundif@silo ~]$ ls -l
+total 16
+drwx------ 2 atcundif students 4096 Jan  9 09:55 bin
+-rw------- 1 atcundif students  485 Jan  9 09:55 README
+-rw------- 1 atcundif students  421 Jan 16 12:55 Whatever.class
+-rw------- 1 atcundif students  102 Jan 16 12:55 Whatever.java
+[atcundif@silo ~]$</pre></blockquote> 
+
+Austin will use ports 52594 and 52595. <p> 
+
+When he is done this is the address for his server: 
+
+<blockquote><pre>http://silo.cs.indiana.edu:52594/</pre></blockquote> 
+
+<font size=+3>1. Installing Tomcat </font>
+
+<ul>
+  <li> Copy the archive. <blockquote><pre>[atcundif@silo ~]$ pwd
+/u/atcundif
+[atcundif@silo ~]$ cp /l/www/classes/a348/spr2013/software/apache-tomcat-7.0.35.tar.gz .
+[atcundif@silo ~]$ ls
+apache-tomcat-7.0.35.tar.gz  bin  README  Whatever.class  Whatever.java
+[atcundif@silo ~]$ ls -l
+total 7620
+-rw------- 1 atcundif students 7784675 Feb 17 10:58 apache-tomcat-7.0.35.tar.gz
+drwx------ 2 atcundif students    4096 Jan  9 09:55 bin
+-rw------- 1 atcundif students     485 Jan  9 09:55 README
+-rw------- 1 atcundif students     421 Jan 16 12:55 Whatever.class
+-rw------- 1 atcundif students     102 Jan 16 12:55 Whatever.java
+[atcundif@silo ~]$</pre></blockquote> 
+  <li> Uncompress and unarchive the file. 
+<blockquote><pre>[atcundif@silo ~]$ pwd
+/u/atcundif
+[atcundif@silo ~]$ ls -ld apa*
+-rw------- 1 atcundif students 7784675 Feb 17 10:58 apache-tomcat-7.0.35.tar.gz
+[atcundif@silo ~]$ gunzip apache-tomcat-7.0.35.tar.gz
+[atcundif@silo ~]$ ls -ld apa*
+-rw------- 1 atcundif students 12707840 Feb 17 10:58 apache-tomcat-7.0.35.tar
+[atcundif@silo ~]$ tar xf apache-tomcat-7.0.35.tar
+[atcundif@silo ~]$ ls -ld apa*
+drwx------ 9 atcundif students     4096 Feb 17 11:03 apache-tomcat-7.0.35
+-rw------- 1 atcundif students 12707840 Feb 17 10:58 apache-tomcat-7.0.35.tar
+[atcundif@silo ~]$</pre></blockquote>
+
+<li> Move into the newly created folder. 
+<blockquote><pre>[atcundif@silo ~]$ pwd
+/u/atcundif
+[atcundif@silo ~]$ ls -l
+total 12432
+drwx------ 9 atcundif students     4096 Feb 17 11:03 apache-tomcat-7.0.35
+-rw------- 1 atcundif students 12707840 Feb 17 10:58 apache-tomcat-7.0.35.tar
+drwx------ 2 atcundif students     4096 Jan  9 09:55 bin
+-rw------- 1 atcundif students      485 Jan  9 09:55 README
+-rw------- 1 atcundif students      421 Jan 16 12:55 Whatever.class
+-rw------- 1 atcundif students      102 Jan 16 12:55 Whatever.java
+[atcundif@silo ~]$ cd apache-tomcat-7.0.35
+[atcundif@silo apache-tomcat-7.0.35]$ pwd
+/u/atcundif/apache-tomcat-7.0.35
+[atcundif@silo apache-tomcat-7.0.35]$ ls
+bin  conf  lib  LICENSE  logs  NOTICE  RELEASE-NOTES  RUNNING.txt  temp  webapps  work
+[atcundif@silo apache-tomcat-7.0.35]$</pre></blockquote> 
+
+<li> Move into the <code>conf</code> folder and set <code>server.xml</code> up (use your own ports). 
+
+<blockquote><pre>[atcundif@silo apache-tomcat-7.0.35]$ pwd
+/u/atcundif/apache-tomcat-7.0.35
+[atcundif@silo apache-tomcat-7.0.35]$ ls
+bin  conf  lib  LICENSE  logs  NOTICE  RELEASE-NOTES  RUNNING.txt  temp  webapps  work
+[atcundif@silo apache-tomcat-7.0.35]$ cd conf
+[atcundif@silo conf]$ ls
+catalina.policy  catalina.properties  context.xml  logging.properties  server.xml  tomcat-users.xml  web.xml
+[atcundif@silo conf]$ mv server.xml server-distr.xml
+[atcundif@silo conf]$ ls -l
+total 200
+-rw------- 1 atcundif students  12128 Jan 10  2013 catalina.policy
+-rw------- 1 atcundif students   6392 Jan 10  2013 catalina.properties
+-rw------- 1 atcundif students   1394 Jan 10  2013 context.xml
+-rw------- 1 atcundif students   3288 Jan 10  2013 logging.properties
+-rw------- 1 atcundif students   6435 Jan 10  2013 server-distr.xml
+-rw------- 1 atcundif students   1530 Jan 10  2013 tomcat-users.xml
+-rw------- 1 atcundif students 162905 Jan 10  2013 web.xml
+[atcundif@silo conf]$ pico -w server.xml
+[atcundif@silo conf]$ ls -l
+total 204
+-rw------- 1 atcundif students  12128 Jan 10  2013 catalina.policy
+-rw------- 1 atcundif students   6392 Jan 10  2013 catalina.properties
+-rw------- 1 atcundif students   1394 Jan 10  2013 context.xml
+-rw------- 1 atcundif students   3288 Jan 10  2013 logging.properties
+-rw------- 1 atcundif students   6435 Jan 10  2013 server-distr.xml
+<font color=red>-rw------- 1 atcundif students    736 Feb 17 11:08</font><font color=blue> server.xml</font>
+-rw------- 1 atcundif students   1530 Jan 10  2013 tomcat-users.xml
+-rw------- 1 atcundif students 162905 Jan 10  2013 web.xml
+[atcundif@silo conf]$ cat server.xml
+&lt;Server port="<font color="#0066cc">52595</font>" shutdown="SHUTDOWN"&gt;
+
+  &lt;GlobalNamingResources&gt;
+    &lt;!-- Used by Manager webapp --&gt;
+    &lt;Resource name="UserDatabase" auth="Container"
+              type="org.apache.catalina.UserDatabase"
+       description="User database that can be updated and saved"
+           factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
+          pathname="conf/tomcat-users.xml" /&gt;
+  &lt;/GlobalNamingResources&gt;
+
+  &lt;Service name="Catalina"&gt;
+    &lt;Connector port="<font color="#0066cc">52594</font>" /&gt;
+
+    &lt;Engine name="Catalina" defaultHost="localhost"&gt;
+      &lt;Realm className="org.apache.catalina.realm.UserDatabaseRealm"
+             resourceName="UserDatabase" /&gt;
+      &lt;Host name="localhost" appBase="webapps" /&gt;
+    &lt;/Engine&gt;
+
+  &lt;/Service&gt;
+&lt;/Server&gt;
+[atcundif@silo conf]$</pre></blockquote>
+
+
+<li> Set up three environment variables (use your own username).
+
+<blockquote><pre>[atcundif@silo conf]$ pwd
+/u/atcundif/apache-tomcat-7.0.35/conf
+[atcundif@silo conf]$ pico -w ~/.bash_profile
+[atcundif@silo conf]$ echo $JAVA_HOME
+
+[atcundif@silo conf]$ source ~/.bash_profile
+[atcundif@silo conf]$ echo $JAVA_HOME
+/usr/lib/jvm/jre-1.7.0-openjdk.x86_64
+[atcundif@silo conf]$ tail -10 ~/.bash_profile
+export EDITOR
+
+JAVA_HOME=/usr/lib/jvm/jre-1.7.0-openjdk.x86_64
+export JAVA_HOME
+
+CATALINA_HOME=/u/<font color="#0066cc">atcundif</font>/apache-tomcat-7.0.35
+export CATALINA_HOME
+
+CLASSPATH=.:$CATALINA_HOME/lib/servlet-api.jar
+export CLASSPATH
+[atcundif@silo conf]$</pre></blockquote> 
+
+<li> Now you should be able to start/stop the server.
+
+<blockquote><pre>[atcundif@silo conf]$ pwd
+/u/atcundif/apache-tomcat-7.0.35/conf
+[atcundif@silo conf]$ $CATALINA_HOME/bin/startup.sh
+Using CATALINA_BASE:   /u/atcundif/apache-tomcat-7.0.35
+Using CATALINA_HOME:   /u/atcundif/apache-tomcat-7.0.35
+Using CATALINA_TMPDIR: /u/atcundif/apache-tomcat-7.0.35/temp
+Using JRE_HOME:        /usr/lib/jvm/jre-1.7.0-openjdk.x86_64
+Using CLASSPATH:       /u/atcundif/apache-tomcat-7.0.35/bin/bootstrap.jar:/u/atcundif/apache-tomcat-7.0.35/bin/tomcat-juli.jar
+[atcundif@silo conf]$</pre></blockquote>
+
+We can check the server at the URL we indicated earlier. <p> 
+
+<li> Just to be sure you own it, make this change
+
+<blockquote><pre>[atcundif@silo conf]$ pwd
+/u/atcundif/apache-tomcat-7.0.35/conf
+[atcundif@silo conf]$ cd ..
+[atcundif@silo apache-tomcat-7.0.35]$ ls
+bin  conf  lib  LICENSE  logs  NOTICE  RELEASE-NOTES  RUNNING.txt  temp  webapps  work
+[atcundif@silo apache-tomcat-7.0.35]$ cd webapps/
+[atcundif@silo webapps]$ cd ROOT/
+[atcundif@silo ROOT]$ pwd
+/u/atcundif/apache-tomcat-7.0.35/webapps/ROOT
+[atcundif@silo ROOT]$ pico -w index.html
+[atcundif@silo ROOT]$ cat index.html
+I like Hemingway:
+
+&lt;blockquote&gt;&lt;img src="http://static.guim.co.uk/sys-images/Books/Pix/pictures/2009/6/30/1246371076422/Ernest-Hemingway-in-Paris-001.jpg"&gt;&lt;/blockquote&gt;
+[atcundif@silo ROOT]$</pre></blockquote>
+
+</blockquote> 
+
+</ul> 
+
+
+<font size=+3>2. Installing Iceblox</font> 
+
+<ul> 
+
+<li> Once you have installed Tomcat you need to run these commands: <p> 
+
+<blockquote><pre>mkdir $CATALINA_HOME/webapps/iceblox
+mkdir $CATALINA_HOME/webapps/iceblox/WEB-INF
+mkdir $CATALINA_HOME/webapps/iceblox/WEB-INF/classes
+mkdir $CATALINA_HOME/webapps/iceblox/WEB-INF/lib
+cp /l/www/classes/c212/fall2010/notes/iceblox/Iceblox.java $CATALINA_HOME/webapps/iceblox
+cp /l/www/classes/c212/fall2010/notes/iceblox/iceblox.gif  $CATALINA_HOME/webapps/iceblox
+cp /l/www/classes/c212/fall2010/notes/iceblox/iceblox.html $CATALINA_HOME/webapps/iceblox</pre></blockquote> 
+
+<li> You can run them one at a time or all at once. <p> 
+
+<blockquote><pre>[atcundif@silo ROOT]$ pwd
+/u/atcundif/apache-tomcat-7.0.35/webapps/ROOT
+[atcundif@silo ROOT]$ cd
+[atcundif@silo ~]$ pwd
+/u/atcundif
+[atcundif@silo ~]$ echo $CATALINA_HOME
+/u/atcundif/apache-tomcat-7.0.35
+[atcundif@silo ~]$ mkdir $CATALINA_HOME/webapps/iceblox
+mkdir $CATALINA_HOME/webapps/iceblox/WEB-INF/classes
+[atcundif@silo ~]$ mkdir $CATALINA_HOME/webapps/iceblox/WEB-INF
+[atcundif@silo ~]$ mkdir $CATALINA_HOME/webapps/iceblox/WEB-INF/lib
+[atcundif@silo ~]$ cp /l/www/classes/c212/fall2010/notes/iceblox/Iceblox.java $CATALINA_HOME/webapps/iceblox
+[atcundif@silo ~]$ cp /l/www/classes/c212/fall2010/notes/iceblox/iceblox.gif  $CATALINA_HOME/webapps/iceblox
+[atcundif@silo ~]$ cp /l/www/classes/c212/fall2010/notes/iceblox/iceblox.html $CATALINA_HOME/webapps/iceblox
+[atcundif@silo ~]$ pwd
+/u/atcundif
+[atcundif@silo ~]$</pre></blockquote>
+
+<li> Running these commands will have this effect: <p> 
+
+<blockquote><pre>[atcundif@silo ~]$ pwd
+/u/atcundif
+[atcundif@silo ~]$ cd $CATALINA_HOME
+[atcundif@silo apache-tomcat-7.0.35]$ cd webapps/
+[atcundif@silo webapps]$ ls
+docs  examples  host-manager  iceblox  manager  ROOT
+[atcundif@silo webapps]$ ls -l
+total 24
+drwx------ 13 atcundif students 4096 Feb 17 11:03 docs
+drwx------  6 atcundif students 4096 Feb 17 11:03 examples
+drwx------  5 atcundif students 4096 Feb 17 11:03 host-manager
+drwx------  3 atcundif students 4096 Feb 17 14:40 iceblox
+drwx------  5 atcundif students 4096 Feb 17 11:03 manager
+drwx------  3 atcundif students 4096 Feb 17 11:27 ROOT
+[atcundif@silo webapps]$ du -a iceblox/
+4       iceblox/iceblox.html
+20      iceblox/Iceblox.java
+12      iceblox/iceblox.gif
+4       iceblox/WEB-INF/classes
+4       iceblox/WEB-INF/lib
+12      iceblox/WEB-INF
+52      iceblox/
+[atcundif@silo webapps]$</pre></blockquote> 
+
+<li> We now need to compile the <code>.java</code> file and we're done. 
+
+<blockquote><pre>[atcundif@silo webapps]$ pwd
+/u/atcundif/apache-tomcat-7.0.35/webapps
+[atcundif@silo webapps]$ cd iceblox/
+[atcundif@silo iceblox]$ ls
+iceblox.gif  iceblox.html  Iceblox.java  WEB-INF
+[atcundif@silo iceblox]$ javac Iceblox.java
+Picked up _JAVA_OPTIONS: -Xms512m -Xmx512m
+Note: Iceblox.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+[atcundif@silo iceblox]$ ls -l
+total 56
+-rw------- 1 atcundif students 14750 Feb 17 14:47 Iceblox.class
+-rw------- 1 atcundif students  9719 Feb 17 14:40 iceblox.gif
+-rw------- 1 atcundif students   191 Feb 17 14:40 iceblox.html
+-rw------- 1 atcundif students 17927 Feb 17 14:40 Iceblox.java
+drwx------ 4 atcundif students  4096 Feb 17 14:40 WEB-INF
+[atcundif@silo iceblox]$</pre></blockquote> 
+
+<li> Check online at: 
+
+<blockquote><pre>http://silo.cs.indiana.edu:52594/iceblox/iceblox.html</pre></blockquote> 
+
+If you have trouble loading Java in the browser see <a href="labsixhelp.html">this document</a>. <p> 
+
+<p> After that our applets should be able to load without any modification on our side.
+
+<li> From the command prompt on your Windows machine you can also try: 
+
+<blockquote><pre>W:\desktop&gt;"c:\Program Files\Java\jdk1.7.0_07\bin\appletviewer.exe" http://silo.cs.indiana.edu:52594/iceblox/iceblox.html</pre></blockquote> 
+
+Or something to that effect. We will show what exactly in class on Wed. <p> 
+
+</ul> 
+
+<font size=+3>3. Installing the Chat Application</font> <p> 
+
+<ul>
+  <li> The following commands need to be run: <p> 
+
+<blockquote><pre>mkdir $CATALINA_HOME/webapps/chat
+mkdir $CATALINA_HOME/webapps/chat/WEB-INF
+mkdir $CATALINA_HOME/webapps/chat/WEB-INF/classes
+mkdir $CATALINA_HOME/webapps/chat/WEB-INF/lib
+
+cp /l/www/classes/c212/fall2012/chat/Chat.java        $CATALINA_HOME/webapps/chat/WEB-INF/classes
+cp /l/www/classes/c212/fall2012/chat/ChatServlet.java $CATALINA_HOME/webapps/chat/WEB-INF/classes
+cp /l/www/classes/c212/fall2012/chat/web.xml          $CATALINA_HOME/webapps/chat/WEB-INF
+cp /l/www/classes/c212/fall2012/chat/ChatApplet.java  $CATALINA_HOME/webapps/chat
+cp /l/www/classes/c212/fall2012/chat/HttpMessage.java $CATALINA_HOME/webapps/chat</pre></blockquote> 
+
+<li> Now go to this context (<code>cd $CATALINA_HOME/webapps/chat</code>) and make three changes:
+
+<blockquote>
+  (a) modify lines <code>55</code> and <code>66</code> in <code>ChatApplet.java</code>, put your port number, save, compile <br>
+  (b) move to <code>WEB-INF/classes</code> and change line <code>36</code> in <code>Chat.java</code>, put your port number, save, compile 
+</blockquote> <p> 
+
+Test it with: 
+
+  <blockquote><pre>http://silo.cs.indiana.edu:11146/chat/servlet/Chat</pre></blockquote> 
+
+Here's how this went for me: <p> 
+
+<blockquote><pre>[atcundif@silo iceblox]$ pwd
+/u/atcundif/apache-tomcat-7.0.35/webapps/iceblox
+[atcundif@silo iceblox]$ cd
+[atcundif@silo ~]$ pwd
+/u/atcundif
+[atcundif@silo ~]$ mkdir $CATALINA_HOME/webapps/chat
+[atcundif@silo ~]$ mkdir $CATALINA_HOME/webapps/chat/WEB-INF
+[atcundif@silo ~]$ mkdir $CATALINA_HOME/webapps/chat/WEB-INF/classes
+[atcundif@silo ~]$ mkdir $CATALINA_HOME/webapps/chat/WEB-INF/lib
+[atcundif@silo ~]$
+[atcundif@silo ~]$ cp /l/www/classes/c212/fall2012/chat/Chat.java        $CATALINA_HOME/webapps/chat/WEB-INF/classes
+[atcundif@silo ~]$ cp /l/www/classes/c212/fall2012/chat/ChatServlet.java $CATALINA_HOME/webapps/chat/WEB-INF/classes
+[atcundif@silo ~]$ cp /l/www/classes/c212/fall2012/chat/web.xml          $CATALINA_HOME/webapps/chat/WEB-INF
+[atcundif@silo ~]$ cp /l/www/classes/c212/fall2012/chat/ChatApplet.java  $CATALINA_HOME/webapps/chat
+[atcundif@silo ~]$ cp /l/www/classes/c212/fall2012/chat/HttpMessage.java $CATALINA_HOME/webapps/chat
+[atcundif@silo ~]$ pwd
+/u/atcundif
+[atcundif@silo ~]$ cd $CATALINA_HOME/webapps/chat
+[atcundif@silo chat]$ pwd
+/u/atcundif/apache-tomcat-7.0.35/webapps/chat
+[atcundif@silo chat]$ ls -l
+total 12
+-rw------- 1 atcundif students 2386 Feb 17 15:08 ChatApplet.java
+-rw------- 1 atcundif students 1828 Feb 17 15:08 HttpMessage.java
+drwx------ 4 atcundif students 4096 Feb 17 15:08 WEB-INF
+[atcundif@silo chat]$ pico -w ChatApplet.java
+[atcundif@silo chat]$ grep -in 52594 ChatApplet.java
+55:              new URL("http://silo.cs.indiana.edu:52594/chat/servlet/ChatServlet");
+66:              new URL("http://silo.cs.indiana.edu:52594/chat/servlet/ChatServlet");
+[atcundif@silo chat]$ javac *.java
+Picked up _JAVA_OPTIONS: -Xms512m -Xmx512m
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+[atcundif@silo chat]$ ls -l
+total 20
+-rw------- 1 atcundif students 3147 Feb 17 15:09 ChatApplet.class
+-rw------- 1 atcundif students 2388 Feb 17 15:09 ChatApplet.java
+-rw------- 1 atcundif students 2421 Feb 17 15:09 HttpMessage.class
+-rw------- 1 atcundif students 1828 Feb 17 15:08 HttpMessage.java
+drwx------ 4 atcundif students 4096 Feb 17 15:08 WEB-INF
+[atcundif@silo chat]$<pre></blockquote> 
+
+That took care of (a) and half of (b). Let's finish this off: <p> 
+
+<blockquote><pre>[atcundif@silo chat]$ pwd
+/u/atcundif/apache-tomcat-7.0.35/webapps/chat
+[atcundif@silo chat]$ cd WEB-INF/classes/
+[atcundif@silo classes]$ ls -l
+total 8
+-rw------- 1 atcundif students 1424 Feb 17 15:08 Chat.java
+-rw------- 1 atcundif students 1718 Feb 17 15:08 ChatServlet.java
+[atcundif@silo classes]$ pico -w Chat.java
+[atcundif@silo classes]$ grep -in 52594 Chat.java
+36:       + "codebase=\"http://silo.cs.indiana.edu:52594/chat\"\n"
+[atcundif@silo classes]$ javac *.java
+Picked up _JAVA_OPTIONS: -Xms512m -Xmx512m
+[atcundif@silo classes]$ ls -l
+total 24
+-rw------- 1 atcundif students 1635 Feb 17 15:13 Chat.class
+-rw------- 1 atcundif students 1425 Feb 17 15:13 Chat.java
+-rw------- 1 atcundif students 1332 Feb 17 15:13 ChatServlet.class
+-rw------- 1 atcundif students 1718 Feb 17 15:08 ChatServlet.java
+-rw------- 1 atcundif students  775 Feb 17 15:13 MessageSink.class
+-rw------- 1 atcundif students  371 Feb 17 15:13 MessageSource.class
+[atcundif@silo classes]$</pre></blockquote>
+
+It's better to test it with your partner when you're done. 
+
+</ul> <p> 
+
+<font size=+4>Additional Thoughts</font> <p> 
+
+<ul>
+
+<li> There are many more things we need to say about Tomcat. <p> 
+
+I'll try to summarize them and post them separately in Class Notes. <p> 
+
+<li> There are also lots we could/should say about applets and servlets. <p> 
+
+Maybe we'll revisit the topic in lab later. <p> 
+
+<li> Finally we didn't say anything about or show any of the code involved. <p> 
+
+This will certainly change, and I want to give you a taste of that. <p> 
+
+<a name="chat">The chat application has the following basic structure:</a> <p> 
+
+<pre> ... ---+--- $CATALINA_HOME ---+--- webapps ---+--- chat ---+--- WEB-INF ---+--- classes ---+--- <a href="http://silo.cs.indiana.edu:8346/2011/c212/Chatjava.phps">Chat.java</a> 
+        |                      |                            |               |               |
+        |                      |                            |               +--- lib        +--- <a href="http://silo.cs.indiana.edu:8346/2011/c212/ChatServletjava.phps">ChatServlet.java</a> 
+       ...                    ...                           |               |
+                                                            |               +--- <a href="http://silo.cs.indiana.edu:8346/2011/c212/webxml.phps">web.xml</a>
+                                                            | 
+                                                            +--- <a href="http://silo.cs.indiana.edu:8346/2011/c212/ChatAppletjava.phps">ChatApplet.java</a> 
+                                                            |  
+                                                            +--- <a href="http://silo.cs.indiana.edu:8346/2011/c212/HttpMessagejava.phps">HttpMessage.java</a> </pre>
+
+
+There's an applet for the client side in there that uses a helper class. <p> 
+
+There's a front end servlet for the server side, that allows you to pick a name. <p> 
+
+There's another servlet for the server side to implement the actual server-side chat. <p> 
+
+The servlet uses the Observer-Observable pattern to be discussed later in the course. 
+
+</ul> 
+
+<hr> Updated by &copy; Adrian German for C212/A592 and H212 - Spring 2015
+
+</td> </tr>
+
+
+    </tbody>
+  </table>
+
+
+</body></html>
+
+

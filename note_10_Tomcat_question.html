@@ -1,0 +1,275 @@
+
+<html>
+  <head>
+    <title>C212/A592 Intro to Software Systems - Spring 2015</title>
+  <head>
+  <body bgcolor="white">
+  <table>
+    <tr> <td colspan=2> <hr> </td> </tr>
+    <tr>
+
+<td> <table> 
+
+      <td align="center">
+
+        <a href="http://www.cs.indiana.edu/classes/c212/"><img src="http://www.cs.indiana.edu/classes/c212-dgerman/sum2014/summer.png" border=0></a> <br>
+
+<img src="http://www.cs.indiana.edu/classes/a201-dger/sum2001/_notes.gif">
+
+        <p> Spring Semester 2015 </p> 
+
+      </td>
+    </tr>
+</table> </td> </tr> 
+    <tr> <td colspan=2> <hr> Tomcat: What Can Go Wrong?<hr> <p> 
+
+<font size=+3>Is Your Server Up?</font> <p> 
+
+The answer to this question can be found with this Unix command: 
+
+<blockquote><pre><font color="lightgrey">-bash-4.1$</font> <font color="blue">ps -ef | grep </font><font color=red>dimacdon</font>
+dimacdon  7348     1  0 Feb19 ?        00:00:56 /usr/lib/jvm/jre-1.7.0-openjdk.x86_64/bin/java -Djava.util.logging.config.file=/u/dimacdon/apache-tomcat-7.0.35/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djava.endorsed.dirs=/u/dimacdon/apache-tomcat-7.0.35/endorsed -classpath /u/dimacdon/apache-tomcat-7.0.35/bin/bootstrap.jar:/u/dimacdon/apache-tomcat-7.0.35/bin/tomcat-juli.jar -Dcatalina.base=/u/dimacdon/apache-tomcat-7.0.35 -Dcatalina.home=/u/dimacdon/apache-tomcat-7.0.35 -Djava.io.tmpdir=/u/dimacdon/apache-tomcat-7.0.35/temp org.apache.catalina.startup.Bootstrap start
+dgerman  19581 17907  0 11:31 pts/273  00:00:00 grep dimacdon
+<font color="lightgrey">-bash-4.1$</font> <font color="blue">ps -ef | grep </font><font color="red">krismock</font>
+dgerman  19943 17907  0 11:31 pts/273  00:00:00 grep krismock
+<font color="lightgrey">-bash-4.1$</font> whoami
+dgerman
+<font color="lightgrey">-bash-4.1$</font></pre></blockquote>
+
+In this example we see Dimas's server is up, but Krista's isn't. <p> 
+
+That long line will show up wrapped around on your screen. <p> 
+
+You can check if anybody server's running just by using that person's username. <p> 
+
+<font size=+3>What Is Your Server's Process ID?</font> <p> 
+
+Take a look at the output above: Dimas's server has a process ID of <code>7348</code>. <p> 
+
+It is the number to the left of <code>1</code>. It's listed in the second column, after the owner's username. <p> 
+
+<blockquote><pre><font color="lightgrey">-bash-4.1$</font> <font color="blue">ps -ef | grep</font> <font color=red>hartz</font>
+<font color="brown">hartzogc</font> 17410     1  0 Feb18 ?        00:01:40 /usr/lib/jvm/jre-1.7.0-openjdk.x86_64/bin/java -Djava.util.logging.config.file=/u/hartzogc/apache-tomcat-7.0.35/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djava.endorsed.dirs=/u/hartzogc/apache-tomcat-7.0.35/endorsed -classpath /u/hartzogc/apache-tomcat-7.0.35/bin/bootstrap.jar:/u/hartzogc/apache-tomcat-7.0.35/bin/tomcat-juli.jar -Dcatalina.base=/u/hartzogc/apache-tomcat-7.0.35 -Dcatalina.home=/u/hartzogc/apache-tomcat-7.0.35 -Djava.io.tmpdir=/u/hartzogc/apache-tomcat-7.0.35/temp org.apache.catalina.startup.Bootstrap start
+dgerman  28425 17907  0 11:40 pts/273  00:00:00 grep hartz
+<font color="lightgrey">-bash-4.1$</font></pre></blockquote> 
+
+Connor's server has a process ID of 17410. Who's Connor? 
+
+<blockquote><pre><font color="lightgrey">-bash-4.1$</font> <font color="blue">finger</font> <font color=red>hartzogc</font>
+Login: <font color="brown">hartzogc</font>                         Name: Connor Hartzog
+Directory: /u/hartzogc                  Shell: /bin/bash
+Last login Thu Feb 19 17:02 (EST) on pts/275 from 156-56-133-56.dhcp-bl.indiana.edu
+No mail.
+No Plan.
+<font color="lightgrey">-bash-4.1$</font></pre></blockquote> 
+
+<font size=+3>How Do You Stop Your Server?</font> <p> 
+
+If all is set properly the command is: 
+
+<blockquote><pre>$CATALINA_HOME/bin/shutdown.sh</pre></blockquote>
+
+Then check (as above) to convince yourself it went away. <p> 
+
+<font size=+3>What If It Doesn't Want to Stop?</font> <p> 
+
+First, wait a little, give it some time. <p> 
+
+If you're sure it really doesn't want to go away you can kill the process: 
+
+<blockquote><pre>kill 7348</pre></blockquote> 
+
+The command above would try to stop Dimas's server process. <p> 
+
+It will only work for Dimas since he is the owner of the process. <p> 
+
+<font size=+3>What If It Really Doesn't Want to Go Away?</font> <p> 
+
+If you're sure <code>kill</code> doesn't work you can try: 
+
+<blockquote><pre>kill <font color=red>-9</font> 7348</pre></blockquote> 
+
+<font size=+3>How Could That Even Happen? (What Not To Do.) </font> <p> 
+
+Trying to start your server if it's already running is something to avoid. <p> 
+
+It works the same with your car: don't try to start it if it's already running. <p> 
+
+You might damage it. Start the car only when it's not running. <p> 
+
+Likewise if you start your Tomcat when it's running already you might turn it into a zombie. <p> 
+
+If you start your Tomcat when it's running already it will try to take away resources from itself. <p> 
+
+The two (or more if you keep running the start command) will soon deadlock each other. <p> 
+
+Some other lightweight servers are immune to this problem but Tomcat and MySQL are heavyweights. <p> 
+
+We don't do any MySQL here but I wanted to let you know Tomcat is in good company. <p> 
+
+<font size=+3>How Do You Start Your Server?</font> <p> 
+
+You know this already: <p> 
+
+<ul>
+  <li> if your given ports are available, and
+  <li> if your server is not already running, then 
+  <li> start the server with <code>$CATALINA_HOME/bin/startup.sh</code>
+</ul> <p> 
+
+As a reminder, NEVER try to start the server if it's already running. <p> 
+
+<font size=+3>How Do You Restart Your Server?</font> <p> 
+
+To restart the server: <p> 
+
+<ul>
+  <li> Make sure it's running. (Check with <code>ps</code>). 
+  <li> Stop the server (using one of the methods discussed above). 
+  <li> Make sure it's down. (Check again with <code>ps</code> as shown). 
+  <li> Start it with the command <code>$CATALINA_HOME/bin/startup.sh</code>
+  <li> Check that it's up (again, using the <code>ps</code> command). 
+</ul> <p> 
+
+<font size=+3>What If Something (Else) Goes Wrong?</font> <p>
+
+The server writes a number of log files in 
+
+<blockquote><pre>$CATALINA_HOME/logs</pre></blockquote> 
+
+If something goes wrong it's going to be documented in real time in one of those files. <p> 
+
+<font size=+3>How Do You Check Ports' Availability?</font> <p> 
+
+I give you ports and list them so we can all be on the same page. <p> 
+
+Anyone can use any of the available ports (on purpose, or by mistake). <p> 
+
+To check if the ports assigned to you are available try this: <p> 
+
+<blockquote><pre>netstat -a | grep 8346</pre></blockquote> 
+
+Here's how it works for me: 
+
+<blockquote><pre><font color="lightgrey">-bash-4.1$</font> <font color="blue">netstat -a | grep </font><font color=red>8346</font>
+tcp        0      0 *:8346                      *:*                         LISTEN
+unix  2      [ ]         STREAM     CONNECTED     3325834653
+<font color="lightgrey">-bash-4.1$</font> <font color="blue">netstat -a | grep </font><font color=red>13651</font>
+tcp        0      0 *:13651                     *:*                         LISTEN
+<font color="lightgrey">-bash-4.1$</font> <font color="blue">netstat -a | grep </font><font color=red>13652</font>
+tcp        0      0 localhost:13652             *:*                         LISTEN
+<font color="lightgrey">-bash-4.1$</font> <font color="blue">netstat -a | grep </font><font color=red>13653</font>
+tcp        0      0 *:13653                     *:*                         LISTEN
+<font color="lightgrey">-bash-4.1$</font> <font color="blue">netstat -a | grep </font><font color=red>13649</font>
+<font color="lightgrey">-bash-4.1$</font></pre></blockquote> 
+
+You see that <code>8346</code> is not available (I am using it). <p> 
+
+Also ports <code>13651</code> and <code>13652</code> are taken (by Patrick Gibbons, as they should). <p> 
+
+Port <code>13653</code> is also not available (Scott Goodwin is using it, as he should). <p> 
+
+But we see that port <code>13649</code> is not being used at the moment. <p> 
+
+That is one of Caleb's ports and once he starts using it it will become unavailable to the rest of us (as it should). <p> 
+
+But currently <code>13649</code> is clearly not being used. So someone (else) could grab it and use it (by mistake or on purpose). <p> 
+
+<font size=+3>Where Is My Server's Home Page?</font> <p> 
+
+Your server's original homepage is at:
+
+<blockquote><pre>$CATALINA_HOME/webapps/ROOT/index.jsp</pre></blockquote> 
+
+You may or may not be able to change this page (also it's very complicated). We will discuss that later. <p> 
+
+What we did in lab was to define a (new) file:
+
+<blockquote><pre>$CATALINA_HOME/webapps/ROOT/index.html</pre></blockquote> 
+
+This file did not exist at first but once we create it it becomes the default home page. <p>
+
+<font size=+3>Is There a Map of All Server's Files?</font> <p> 
+
+Absolutely, we described that at the end of the lab. <p> 
+
+Here's another map: <p> 
+
+<blockquote><pre>
+$CATALINA_HOME --+-- webapps --+-- squash --+-- WEB-INF --+-- classes --+-- <a href="http://silo.cs.indiana.edu:8346/2011/a202/1129Onejava.phps">One.java</a>
+                 |             |            |             |
+                 |             |            |             +-- lib 
+                 |             |            |             | 
+                 |             |            |             +--- <a href="http://silo.cs.indiana.edu:8346/2011/a202/1129webxml.phps">web.xml</a>
+                 |             |            |
+                 |             |            +-- <a href="http://silo.cs.indiana.edu:8346/2011/a202/1129onehtml.phps">one.html</a>
+                 |             |            |
+                 |             |            +-- index.html
+                 |             | 
+                 |             +-- ROOT --+-- WEB-INF ... 
+                 +-- bin                  | 
+                 |                        +-- index.html 
+                 +-- conf                 
+                 |                         
+                 +-- logs
+                 |
+                 ... 
+</pre></blockquote> 
+
+We'll go over this a little bit later in lab. <p> 
+
+<font size=+3>Do I Need to Become Server Manager?</font> <p> 
+
+Yes, there is such a role, and you can give it to yourself. <p> 
+
+I'll go over this in class a bit later. <p> 
+
+Essentially you modify <code>tomcat-users.xml</code> and give yourself a name and a password. <p> 
+
+Then you have access to your servers contexts and can better administer your server. <p> 
+
+<font size=+3>What If I Still Have Problems?</font> <p> 
+
+Go see Adrian (<code>dgerman@indiana.edu</code>). He'll fix whatever you're struggling with. <p> 
+
+Make appointment <img src="http://www.cs.indiana.edu/classes/a113-dger/left.gif"> <a href="http://silo.cs.indiana.edu:8346/cgi-bin/spr2015/schedule">here</a> or e-mail him for a (more) convenient time. <p> 
+
+<font size=+3>What Unix Commands Have Been Mentioned Above?</font> <p> 
+
+Here's a quick (and incomplete) list: <p> 
+
+<ul>
+  <li> <code>netstat</code> 
+  <li> <code>ps</code> 
+  <li> <code>grep</code> 
+  <li> <code>|</code> (not really a command, the Unix pipe) 
+  <li> <code>ls</code> 
+  <li> <code>pwd</code> 
+  <li> <code>hostname</code> 
+  <li> <code>whoami</code> 
+  <li> <code>clear</code> 
+  <li> <code>man</code> 
+  <li> <code>mkdir</code> 
+</ul> <p> 
+
+I'll post links to where you can read about these. <p> 
+
+<font size=+3>What is the IU Knowledge Base?</font> <p> 
+
+A really <a href="https://kb.iu.edu/d/afsk">cool thing</a> originally started by IU CSCI grad student John Nienart. <p> 
+
+<font size=+3>What Now?</font> <p> 
+
+Take a break. Feel good. Listen to a song. (I like <a href="https://www.youtube.com/watch?v=5RVTO-CYH9s">this one</a>.) 
+
+<hr> Updated by &copy; Adrian German for C212/A592 and H212 - Spring 2015
+
+</td> </tr>
+
+
+    </tbody>
+  </table>
+
+
+</body>
+</html>

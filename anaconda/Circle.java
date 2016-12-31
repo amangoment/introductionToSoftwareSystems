@@ -1,6 +1,3 @@
-// (powered by Fernflower decompiler)
-//
-
 import java.awt.Color;
 import java.awt.Graphics;
 

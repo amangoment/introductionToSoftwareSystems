@@ -1,8 +1,3 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -31,7 +26,6 @@ public class Snake extends ArrayList<Circle> {
         for(int var2 = this.size() - 1; var2 >= 0; --var2) {
             ((Circle)this.get(var2)).draw(var1);
         }
-
     }
 
     public void setDirection(String var1) {

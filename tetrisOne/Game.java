@@ -4,18 +4,22 @@ import java.awt.event.*;
 public class Game implements World {
   Shape current; 
   Ground ground; 
+
   boolean theEnd = false; 
   public boolean hasEnded() {
     return this.theEnd; 
   }
+
   String message = ""; 
   public void sayBye() {
     this.message = "Game Over!";  
   }
+
   public Game() {
     this.current = new Shape(200, 0); 
     this.ground = new Ground(); 
   }
+
   public void teh() {
     this.current.fall(); 
     if (current.y >= 400 || this.current.touches( this.ground ) ) {
@@ -27,7 +31,9 @@ public class Game implements World {
       }
     }
   }
+
   public void meh(MouseEvent e) { }
+
   public void keh(KeyEvent e) {
     if (this.current != null) { 
       int code = e.getKeyCode(); 
@@ -38,6 +44,7 @@ public class Game implements World {
       }
     }
   }
+  
   public void draw(Graphics g) {
     if (this.ground != null) this.ground.draw( g );    
     if (this.current != null) this.current.draw( g );     

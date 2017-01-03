@@ -11,7 +11,7 @@ would not terminate? If so, change the algorithm to make sure it always terminat
 10000 6 500 says: Account lasts 1 years 9 months
 */
 
-class Seven {
+class Five {
 	static double stipend, interest;
 	public static void main(String[] args) {
 		double balance = Double.parseDouble(args[0]);

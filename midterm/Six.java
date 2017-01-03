@@ -1,4 +1,5 @@
-/* Growing and Sorting an ArrayList (see basic statement here)
+/*
+Growing and Sorting an ArrayList (see basic statement here)
 
 Write a program that reads a set of floating-point values. Ask the user to enter the
 values (prompting only a single time for the values), then print
@@ -6,12 +7,11 @@ values (prompting only a single time for the values), then print
 • the smallest of the values.
 • the largest of the values.
 • the range, that is the difference between the smallest and largest.
-
 */
 
 import java.util.*;
 
-class Five {
+class Six {
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		ArrayList<Integer> numbers = new ArrayList<Integer>();

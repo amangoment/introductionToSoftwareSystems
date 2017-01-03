@@ -54,9 +54,9 @@ public class Game implements World {
       g.drawString( this.message, 30, 200 );  
       // g.setColor(Color.BLACK); 
     } 
-    // System.out.println( this.ground );     
-
+    // System.out.println( this.ground );
   }
+
   public static void main(String[] args) {
     BigBang b = new BigBang(new Game()); 
     b.start(50, 430); 

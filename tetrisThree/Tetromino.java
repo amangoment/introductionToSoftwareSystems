@@ -2,19 +2,19 @@ import java.awt.*;
 
 class Tetromino {
   // please note the centers of rotation CW
-  static Tetromino sQuare()    { 
+  static Tetromino sQuare() { 
     return new Tetromino(new Point(0, -1), 
                          makeBlocks(new int[] {0, -1, 0, -2, 1, -1, 1, -2}, 
                          Color.GREEN   )); 
   }
     
-  static Tetromino liNe()      { 
+  static Tetromino liNe() { 
     return new Tetromino(new Point(1, -1), 
                          makeBlocks(new int[] {0, -1, 1, -1, 2, -1, 3, -1}, 
                          Color.BLUE    )); 
   }
     
-  static Tetromino l()         { 
+  static Tetromino l() { 
     return new Tetromino(new Point(1, -1), 
                          makeBlocks(new int[] {0, -1, 1, -1, 2, -1, 2, -2}, 
                          Color.MAGENTA )); 
@@ -26,19 +26,19 @@ class Tetromino {
                          Color.CYAN    )); 
   }
     
-  static Tetromino t()         { 
+  static Tetromino t() { 
     return new Tetromino(new Point(1, -1), 
                          makeBlocks(new int[] {0, -1, 1, -1, 2, -1, 1, -2}, 
                          Color.ORANGE  )); 
   }
-    
-  static Tetromino s()         { 
+  
+  static Tetromino s() { 
     return new Tetromino(new Point(1, -1), 
                          makeBlocks(new int[] {0, -1, 1, -1, 1, -2, 2, -2}, 
                          Color.RED     )); 
   }
     
-  static Tetromino z()         { 
+  static Tetromino z() {
     return new Tetromino(new Point(1, -2), 
                          makeBlocks(new int[] {0, -2, 1, -2, 1, -1, 2, -1}, 
                          Color.PINK    )); 

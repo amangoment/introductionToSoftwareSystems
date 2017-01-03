@@ -43,7 +43,7 @@ class Tetris implements World {
  else if (e.getKeyChar() == '2') { System.out.println( "Row 2 full? Answer: " + blocks.fullRow(2) ); } // yet another basic test 
  else if (e.getKeyChar() == 'e') { this.blocks.eliminateFullRows(); } // another basic test
     */
-    else if (e.getKeyChar() == 'r') {    // Rotate CW
+    else if (e.getKeyChar() == 'r') { // Rotate CW
       this.t.rotateCW();  
     } else this.t.move( 0, 0 );     
   }

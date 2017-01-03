@@ -12,6 +12,7 @@ import java.awt.Dimension;
 public class Nine extends JFrame implements ActionListener {
   JTextField t;
   JLabel l; 
+
   public Nine() {
     this.t = new JTextField( );
     t.setPreferredSize( new Dimension(60, 20) );  
@@ -26,9 +27,11 @@ public class Nine extends JFrame implements ActionListener {
     this.setVisible(true); 
     this.setSize(400, 200); 
   }
+
   public void actionPerformed(ActionEvent e) {
     this.l.setText( this.t.getText() ); 
   }
+  
   public static void main(String[] args) {
     JFrame a = new Nine();  
   }

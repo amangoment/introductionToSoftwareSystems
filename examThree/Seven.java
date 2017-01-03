@@ -11,8 +11,11 @@ public class Seven extends JFrame implements KeyListener {
     seven.setSize(400, 400); 
     seven.addKeyListener(seven); 
   }
+
   public void keyPressed(KeyEvent e) { }
+
   public void keyReleased(KeyEvent e) { }
+  
   public void keyTyped(KeyEvent e) { 
     System.out.println("Howdy " + e); 
   }

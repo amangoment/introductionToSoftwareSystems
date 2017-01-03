@@ -50,6 +50,5 @@ public class Snake extends ArrayList<Circle> {
             ((Circle)this.get(1)).setColor(Color.RED);
             this.remove(this.size() - 1);
         }
-
     }
 }

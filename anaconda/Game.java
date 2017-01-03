@@ -5,15 +5,13 @@ import java.awt.event.MouseEvent;
 public class Game implements World {
     Snake snake = new Snake();
 
-    public Game() {
-    }
+    public Game() { }
 
     public void teh() {
         this.snake.move();
     }
 
-    public void meh(MouseEvent var1) {
-    }
+    public void meh(MouseEvent var1) { }
 
     public void keh(KeyEvent var1) {
         if(var1.getKeyCode() == 37) {
@@ -39,7 +37,6 @@ public class Game implements World {
                 this.snake.setDirection("east");
             }
         }
-
     }
 
     public void draw(Graphics var1) {

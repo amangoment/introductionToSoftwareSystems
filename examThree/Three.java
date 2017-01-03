@@ -9,7 +9,9 @@ public class Three implements ActionListener {
     Timer timer = new Timer(1000, three); 
     timer.start(); 
   }
-  int count = 0; 
+
+  int count = 0;
+  
   public void actionPerformed(ActionEvent e) {
     this.count += 1; 
     System.out.println( this.count ); 

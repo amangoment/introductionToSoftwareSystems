@@ -1,10 +1,12 @@
 import java.awt.*; 
 
 public class Bullet extends Circle {
-  int vx = 3, vy = -3; 
+  int vx = 3, vy = -3;
+
   public Bullet(int x, int y, int r, Color c) {
     super(x, y, r, c); 
   }
+
   public void move() {
     this.x += this.vx; 
     this.y += this.vy;   

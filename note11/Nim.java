@@ -9,7 +9,8 @@ class Nim {
     int height = (int)(Math.random() * 90 + 10);     
     PileOfMarbles pile = new PileOfMarbles(height);     
     System.out.println("Game starts with a pile of height: " + pile.report());    
-    int number, currentHeight;     
+    int number, currentHeight;
+    
     while (true) {      
       System.out.println("*** Computer moves.");       
       System.out.println("Pile of marbles of height: " + pile.report());       

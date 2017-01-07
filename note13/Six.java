@@ -13,6 +13,5 @@ public class Six {
     } catch (Exception e) {
       System.out.println( "Oops." ); 
     }
-
   }
 }

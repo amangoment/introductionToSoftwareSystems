@@ -37,7 +37,7 @@ public class BigBang extends JComponent implements ActionListener,
     this.world.keh(e);
     this.repaint();
   }
-
+  
   // int count;
   public void actionPerformed(ActionEvent e) {
     // this.count += 1; 

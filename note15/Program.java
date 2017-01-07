@@ -8,6 +8,7 @@
  7. finish code
  8. run the check-expects 
  */
+ 
  public class Program {
   public static void main(String[] args) {
     LinkedList a = null; 

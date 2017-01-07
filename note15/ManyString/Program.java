@@ -13,7 +13,7 @@
 
  http://www.java2novice.com/images/linked_list.png
 
-Three classes: 
+Three classes:
 */
 
 public class Program {

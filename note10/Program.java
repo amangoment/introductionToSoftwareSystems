@@ -7,13 +7,18 @@ public class Program extends JFrame implements KeyListener {
     System.out.println( "I am the JFrame..." ); 
     this.board.up(); 
   } 
-  public void keyReleased(KeyEvent e) { } 
-  public void keyTyped(KeyEvent e) { } 
-  Board board = new Board(); 
+
+  public void keyReleased(KeyEvent e) { }
+
+  public void keyTyped(KeyEvent e) { }
+
+  Board board = new Board();
+
   public Program() {
     this.add( this.board ); 
     this.addKeyListener(this); 
   }
+  
   public static void main(String[] args) {
     JFrame f = new Program(); 
     f.setVisible(true);

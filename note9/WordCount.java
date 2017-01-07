@@ -8,6 +8,7 @@ class WordCount {
         words = 0, // count the number of words (tokens) in the file
         nonBlankChars = 0, // counts the number of non-blank characters
         allChars = 0; // counts all characters in file including space
+
     for (lines = 0; a.hasNextLine(); ) { // line by line
       String line = a.nextLine(); // get the line
       allChars += line.length(); // count the characters on the line
@@ -21,6 +22,7 @@ class WordCount {
         nonBlankChars += word.length(); // count its characters
       }
     }
+    
     System.out.println("I see " + lines         + " lines in this file.");
     System.out.println("I see " + words         + " words (token) in this file.");
     System.out.println("I see " + nonBlankChars + " non-blank characters in this file.");

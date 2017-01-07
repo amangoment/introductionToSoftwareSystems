@@ -9,29 +9,38 @@ import java.awt.event.KeyEvent;
 
 public class Board extends JComponent implements MouseMotionListener, KeyListener {
   int x, y; // instance variable
+
   public Board() {
     this.addMouseMotionListener( this );  
     this.addKeyListener(this); 
   }
+
   public void mouseMoved(MouseEvent e) { 
     this.x = e.getX();
     this.y = e.getY(); 
     System.out.println( "(" + x + ", " + y + ")"); 
     repaint();
   }
+
   public void up() {
     this.y -= 1; 
     repaint();
   }
+
   public void keyPressed(KeyEvent e) { 
     System.out.println( "Ouch." ); 
   } 
-  public void keyReleased(KeyEvent e) { } 
-  public void keyTyped(KeyEvent e) { } 
+
+  public void keyReleased(KeyEvent e) { }
+
+  public void keyTyped(KeyEvent e) { }
+
   public void mouseDragged(MouseEvent e) { 
     System.out.println("Mouse being dragged.");
   }
-  int i = 0; 
+
+  int i = 0;
+  
   public void paintComponent(Graphics g) {
     int RADIUS = 35; 
     this.i += 1; 

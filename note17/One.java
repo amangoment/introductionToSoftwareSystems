@@ -14,6 +14,5 @@ public class One {
     FileOutputStream fout = new FileOutputStream("database");
     ObjectOutputStream oos = new ObjectOutputStream(fout);
     oos.writeObject(b);
-
   }
 }

@@ -9,6 +9,5 @@ public class One {
     System.out.println( 2 / 3 ); // 0
     System.out.println( 12 % 5 ); // 2
     System.out.println( 1 < 2 ); // true
-
   }
 }

@@ -54,6 +54,7 @@ class Fourteen {
 			}
 		}
 	}
+	
 	static ArrayList<Integer> merge(ArrayList<Integer> a, ArrayList<Integer> b) {
 		ArrayList<Integer result = new ArrayList<Integer>();
 		while (a.size() > 0 || b.size() > 0) {

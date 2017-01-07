@@ -27,9 +27,9 @@ move very far because the choices cancel each other out, but that is not the cas
 Represent locations as integer pairs (x, y). Implement the drunkard’s walk over 100
 intersections, starting at (0, 0), and print the ending location.
 
-*/
+try java Nim Larry Laura Leslie 23
 
-// try java Nim Larry Laura Leslie 23
+*/
 
 import java.util.*;
 
@@ -37,11 +37,13 @@ class Nim {
 	int marbles, turn = -1;
 	ArrayList<String> players;
 	Scanner in = new Scanner(System.in);
+
 	Nim(int marbles, ArrayList<String> players) {
 		this.marbles = marbles;
 		this.players = players;
 		System.out.println(this.marbles + " marbles game for " + this.players);
 	}
+
 	void play() {
 		while (this.marbles > 0) {
 			this.turn = (this.turn + 1) % this.players.size();
@@ -64,5 +66,4 @@ class Nim {
 			(new Nim(Integer.parseInt(args[args.length - 1]), players)).play();
 		}
 	}
-
 }

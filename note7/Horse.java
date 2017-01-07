@@ -3,9 +3,11 @@ public class Unicorn extends Horse {
     super(name);
     // now add the horn etc. ...
   }
+
   public void sing() {
     System.out.println("That's me in the unicorner...");  
   }
+  
   public void talk() {
     super.talk(); 
     System.out.println("Bonjour.");  

@@ -20,6 +20,7 @@ class Eleven {
 		int[] a = {1, 4, 9, 16, 9, 7, 4, 9, 11};
 		System.out.println(Eleven.alternatingSum(a));
 	}
+	
 	static int alternatingSum(int[] a) {
 		String result = a[0] + "";
 		int sum = a[0];

@@ -38,9 +38,11 @@ class Twelve {
 		for (String word : args) sentence.add(scramble(word));
 		System.out.println(sentence);
 	}
+
 	public static int index(String word) {
 		return (int) (Math.random() * (word.length() - 2)) + 1;
 	}
+	
 	public static String scramble(String word) {
 		if (word.length() >= 4) {
 			int i = index(word), j = index(word);

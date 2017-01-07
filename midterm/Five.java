@@ -22,6 +22,7 @@ class Five {
 		else
 			System.out.println("Account lasts " + findOut(balance, 0));
 	}
+	
 	static String findOut(double balance, int months) {
 		double newBalance = balance * (1 + interest) - stipend;
 		if (newBalance >= 0)

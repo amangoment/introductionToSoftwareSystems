@@ -3,10 +3,12 @@ public class Eduardo {
     System.out.println( args[0] ); 
     int size = Integer.parseInt( args[0] ); 
     int[][] a = new int[size][size]; 
-    System.out.println( a ); 
+    System.out.println( a );
+
     for (int[] r : a)
       System.out.println( java.util.Arrays.toString( r ) );
-    int number = 1, row = size - 1, col = size/2; 
+    int number = 1, row = size - 1, col = size/2;
+
     while (number <= size * size) {
        a[row][col] = number; 
        number = number + 1; 
@@ -16,6 +18,7 @@ public class Eduardo {
        } else {
          row = row - 1;
        }
+       
     for (int[] r : a)
       System.out.println( java.util.Arrays.toString( r ) );
     System.out.println(" ---------------------------- "); 

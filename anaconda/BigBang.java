@@ -30,33 +30,27 @@ public class BigBang extends JComponent implements ActionListener, MouseListener
         this.timer.start();
     }
 
-    public void mouseEntered(MouseEvent var1) {
-    }
+    public void mouseEntered(MouseEvent var1) { }
 
-    public void mouseExited(MouseEvent var1) {
-    }
+    public void mouseExited(MouseEvent var1) { }
 
     public void mousePressed(MouseEvent var1) {
         this.world.meh(var1);
         this.repaint();
     }
 
-    public void mouseReleased(MouseEvent var1) {
-    }
+    public void mouseReleased(MouseEvent var1) { }
 
-    public void mouseClicked(MouseEvent var1) {
-    }
+    public void mouseClicked(MouseEvent var1) { }
 
     public void keyPressed(KeyEvent var1) {
         this.world.keh(var1);
         this.repaint();
     }
 
-    public void keyReleased(KeyEvent var1) {
-    }
+    public void keyReleased(KeyEvent var1) { }
 
-    public void keyTyped(KeyEvent var1) {
-    }
+    public void keyTyped(KeyEvent var1) { }
 
     public void actionPerformed(ActionEvent var1) {
         this.world.teh();

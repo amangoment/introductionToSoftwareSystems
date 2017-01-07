@@ -21,12 +21,14 @@ class Ten {
 				return false;
 		return true;
 	}
+
 	static boolean contains(int[] values, int value) {
 		for (int v : values)
 			if (v == value)
 				return true;
 			return false;
 	}
+	
 	public static void main(String[] args) {
 		int[] u = {1, 4, 9, 16, 9, 4, 7, 9, 11};
 		int[] i = {11, 11, 7, 9, 16, 4, 1};

@@ -8,6 +8,7 @@ public class Wednesday {
     };
     System.out.println( Wednesday.deppToString(a) ); 
   }
+  
   public static String deppToString(int[][] a) {
     String answer = ""; 
     for (int[] row : a) {

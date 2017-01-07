@@ -1,5 +1,6 @@
 public class Triangle {
-  int ax, ay, bx, by, cx, cy; 
+  int ax, ay, bx, by, cx, cy;
+
   public Triangle(int x1, int y1, int x2, int y2, int x3, int y3) {
     ax = x1; 
     ay = y1;
@@ -8,6 +9,7 @@ public class Triangle {
     cx = x3; 
     cy = y3;
   }
+
   public void angles() {
     double
       // http://mathsfirst.massey.ac.nz/Algebra/PythagorasTheorem/pythapp.htm
@@ -22,6 +24,7 @@ public class Triangle {
     System.out.println( Math.toDegrees( Math.acos ( ( a * a + c * c - b * b ) / ( 2 * a * c) ) ) ); 
     // System.out.println(...);
   }
+  
   public static void main(String[] args) {
     Triangle a = new Triangle(0, 0, 3, 0, 0, 4);
     a.angles(); 

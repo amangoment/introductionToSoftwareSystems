@@ -5,6 +5,7 @@ class Four {
 		double n = Double.parseDouble(args[0]);
 		System.out.println(Four.sqrt(n) + " squared is equal to " + n);
 	}
+	
 	static double sqrt(double n) {
 		double low = 0, high = n, guess = (high + low) / 2;
 		while (high - low > 1E - 12) {

@@ -1,13 +1,15 @@
 public class Jordan {
   public static void main(String[] args) {
     String[][] entries = 
-    { { "casa" , "thing", "house", "cat" },
+    {
+      { "casa" , "thing", "house", "cat" },
       { "cosa" , "thing", "water", "cat"  , "house" },
       { "agua" , "cat"  , "dog"  , "water", "house", "thing"},
       { "hecho", "water", "fact" , "house", "thing" },
       { "pero" , "house", "dog"  , "fact" , "cat"   },
       { "gato" , "water", "dog"  , "fact" , "cat"   }
-    }; 
+    };
+    
     while (true) {
       int entry = (int) (Math.random() * entries.length); 
       // System.out.println( java.util.Arrays.toString( entries[entry] ) ); 

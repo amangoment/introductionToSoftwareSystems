@@ -13,7 +13,6 @@ public class labE14 {
     System.out.println( "after 3 year the balance is " + balance); 
     balance = balance + interest * balance; 
     System.out.println( "after 4 year the balance is " + balance); 
-    
   }
 }
 

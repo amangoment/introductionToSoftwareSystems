@@ -4,6 +4,7 @@ public class R713 {
     int index = locateIn(a, 4); // 2
     System.out.println(index); 
   }
+  
   public static int locateIn(int[] values, int target) {
 //    for (int i = 0; i < values.length; i++) {
 //      if (values[i] == target) {

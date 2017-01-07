@@ -22,18 +22,23 @@ gas. Supply a CarTester class that tests all methods.
 
 class Car {
 	double mog, fuel;
+
 	Car(double number) {
 		this.mpg = number;
 	}
+
 	void addGas(double gallons) {
 		this.fuel += gallons;
 	}
+
 	void drive(double miles) {
 		this.fuel -= miles / this.mpg;
 	}
+
 	double getGasLevel() {
 		return this.fuel;
 	}
+	
 	public static void main(String[] args) {
 		Car myHybrid = new Car(50);
 		myHybrid.addGas(20);

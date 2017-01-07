@@ -6,6 +6,7 @@ public class One extends JFrame {
   public One() {
     this.add(new Projector());  
   }
+  
   public static void main(String[] args) {
     One a = new One(); 
     a.setVisible(true); 

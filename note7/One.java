@@ -7,8 +7,8 @@ public class One { // worked with Jordan Koontz
       frequencies[value + 5] += 1; // I calculate the distribution here
     }
     System.out.println("\n" + java.util.Arrays.toString( frequencies )); 
-    
   }
+  
   public static int fun(int low, int high) {
     double v = Math.random();
     return (int) ( v * (high - (low - 2)) + (low - 1));  

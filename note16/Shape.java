@@ -22,10 +22,10 @@ public class Shape {
   }
 
   public void draw(Graphics g) {
-    g.setColor( this.color ); 
-    g.fillOval( this.x - this.r, this.y - this.r, 2 * this.r, 2 * this.r ); 
-    g.setColor( Color.BLACK ); 
-    g.drawOval( this.x - this.r, this.y - this.r, 2 * this.r, 2 * this.r ); 
+    g.setColor(this.color); 
+    g.fillOval(this.x - this.r, this.y - this.r, 2 * this.r, 2 * this.r); 
+    g.setColor(Color.BLACK); 
+    g.drawOval(this.x - this.r, this.y - this.r, 2 * this.r, 2 * this.r); 
   }
 
   public void left() {

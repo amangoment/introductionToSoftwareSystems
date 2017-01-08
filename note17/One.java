@@ -9,7 +9,7 @@ public class One {
       // System.out.println( a.nextLine() );
       b.put(a.nextLine(), 10);
     }
-    System.out.println( b );
+    System.out.println(b);
 
     FileOutputStream fout = new FileOutputStream("database");
     ObjectOutputStream oos = new ObjectOutputStream(fout);

@@ -15,6 +15,6 @@ public class Two {
 
     ois.close();
 
-    System.out.println( a );
+    System.out.println(a);
  }
 }

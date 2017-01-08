@@ -13,7 +13,7 @@ public class Game implements World {
   public void teh() {
     this.current.fall(); 
     if (current.y >= 400 || this.current.touches( this.ground ) ) {
-      this.ground.add( this.current );
+      this.ground.add(this.current);
       this.current = new Shape(200, 0); 
     }
   }
@@ -30,13 +30,13 @@ public class Game implements World {
   }
 
   public void draw(Graphics g) {
-    System.out.println( this.ground );     
-    this.ground.draw( g );    
-    this.current.draw( g ); 
+    System.out.println(this.ground);     
+    this.ground.draw(g); 
+    this.current.draw(g); 
   }
   
   public static void main(String[] args) {
     BigBang b = new BigBang(new Game()); 
-    b.start(50, 400); 
+    b.start(50, 400);
   }
 }

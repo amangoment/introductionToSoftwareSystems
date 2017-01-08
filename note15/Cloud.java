@@ -2,7 +2,6 @@ import java.util.*;
 import java.awt.*;
 
 public class Cloud extends ArrayList<Circle> {
-  
   public void draw(Graphics g) {
     for (Circle c : this)
       c.draw(g); 

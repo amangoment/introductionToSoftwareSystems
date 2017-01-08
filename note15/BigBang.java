@@ -16,7 +16,7 @@ public class BigBang extends JComponent implements ActionListener, MouseListener
 
   public void start(int delay, int size) {
     JFrame a = new JFrame(); 
-    a.add( this ); 
+    a.add(this); 
     a.setVisible(true); 
     a.setSize(size, size); 
     this.timer = new Timer(delay, this);  
@@ -44,8 +44,8 @@ public class BigBang extends JComponent implements ActionListener, MouseListener
   public void keyReleased(KeyEvent e) { }
 
   public void keyTyped(KeyEvent e) { }
+
   // int count;
-  
   public void actionPerformed(ActionEvent e) {
     // this.count += 1; 
     // System.out.println("Ouch" + this.count);     

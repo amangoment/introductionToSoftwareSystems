@@ -3,16 +3,16 @@ public class LinkedList {
   LinkedList cdr;
 
   LinkedList(Object first, LinkedList rest) {
-    this.car = first; 
-    this.cdr = rest; 
+    this.car = first;
+    this.cdr = rest;
   }
 
   public Object first() {
-    return this.car; 
+    return this.car;
   }
 
   public LinkedList rest() {
-    return this.cdr;  
+    return this.cdr;
   }
 
   public LinkedList cons(Object e) {
